@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable quotes */
 
 const btn = document.querySelectorAll<HTMLElement>('.btn');
@@ -42,19 +43,6 @@ btn[6]?.addEventListener('click', () => {
   body.style.backgroundColor = '#000000';
 });
 // 6
-
-const increaseFontSizeBy1px = () => {
-  const style = window.getComputedStyle(document.getElementById('here')).getPropertyValue('font-size');
-  const currentSize = parseFloat(style);
-  let newSize = '';
-  newSize = `${currentSize + 1}px`;
-  return newSize;
-};
-btn[5]?.addEventListener('click', () => {
-  box[5].style.fontSize = increaseFontSizeBy1px();
-});
-
-// ?
 box[0]?.addEventListener('mouseover', () => {
   box[0].style.backgroundColor = 'red';
 });
@@ -64,20 +52,46 @@ inputText?.addEventListener('input', () => {
 
   inputChangeP.innerHTML = inputText.value;
 });
-
-const contdownFunction = () => {
-  let timeleft = 10;
-  const downloadTimer = setInterval(() => {
-    if (timeleft <= 0) {
-      clearInterval(downloadTimer);
-      document.getElementById("countdown").innerHTML = "Finished";
-    } else {
-      const timeHereLeft = `${timeleft} seconds remaining`;
-      document.getElementById("countdown").innerHTML = timeHereLeft;
-    }
-    timeleft -= 1;
-  }, 1000);
+// šei nospiežot 7.pogu aiziet konsolēt ik pēc 1 sekundes vinu un to pašu
+const Clo = () => {
+  console.log("hello");
 };
+btn[7]?.addEventListener('click', () => {
+  setInterval(Clo, 3000);
+});
+
+// const increaseFontSizeBy1px = () => {
+//   const style = window.getComputedStyle(document.getElementById('here')).getPropertyValue('font-size');
+//   const currentSize = parseFloat(style);
+//   let newSize = '';
+//   newSize = `${currentSize + 1}px`;
+//   return newSize;
+// };
+
+const counter = document.querySelector<HTMLElement>('#here');
+
+btn[5]?.addEventListener('click', () => {
+  // box[5].style.fontSize = increaseFontSizeBy1px();
+  let count = 0;
+  const timer = setInterval(() => {
+    counter.innerHTML = (((count++) + 1).toString());
+    if (count === 10) {
+      clearInterval(timer);
+    }
+  }, 3000);
+});
+// ?
+
+const counterExtra = document.querySelector<HTMLElement>('#hereExtra');
+let extraCounter = 0;
+const extra = () => {
+  counterExtra.innerHTML = (((extraCounter++) + 1).toString());
+}
+let extraTimer:NodeJS.Timer;
 box[4]?.addEventListener('mouseover', () => {
-  contdownFunction();
+   extraTimer = setInterval(extra, 1000);
+});
+box[4]?.addEventListener('mouseleave', () => {
+  clearInterval(extraTimer);
+  counterExtra.innerHTML = "0";
 });
