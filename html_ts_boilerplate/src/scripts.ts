@@ -1,7 +1,7 @@
-const btn = document.querySelectorAll<HTMLButtonElement>('.btn');
-const box = document.querySelectorAll<HTMLDivElement>('.fields-box--element');
-const body = document.querySelector<HTMLBodyElement>('.body');
-const inputText = document.querySelector<HTMLInputElement>('.fname');
+const btn = document.querySelectorAll<HTMLButtonElement | null>('.btn');
+const box = document.querySelectorAll<HTMLDivElement | null>('.fields-box--element');
+const body = document.querySelector<HTMLBodyElement | null>('.body');
+const inputText = document.querySelector<HTMLInputElement | null>('.fname');
 
 // 1//
 btn[0]?.addEventListener('click', () => {
@@ -39,26 +39,13 @@ btn[6]?.addEventListener('click', () => {
   box[5].style.backgroundColor = '#18D5E1';
   body.style.backgroundColor = '#000000';
 });
-// 6
+// 1.2
 box[0]?.addEventListener('mouseover', () => {
   box[0].style.backgroundColor = 'red';
 });
 
-inputText?.addEventListener('input', () => {
-  const inputChangeP = document.querySelector<HTMLElement>('.input-text');
-
-  inputChangeP.innerHTML = inputText.value;
-});
-// šei nospiežot 7.pogu aiziet konsolēt ik pēc 1 sekundes vinu un to pašu
-const Clo = () => {
-  console.log('hello');
-};
-btn[7]?.addEventListener('click', () => {
-  setInterval(Clo, 3000);
-});
-
 // const increaseFontSizeBy1px = () => {
-//   const style = window.getComputedStyle(document.getElementById('here')).getPropertyValue('font-size');
+// const style = window.getComputedStyle(document.getElementById('here')).getPropertyValue('font-size');
 //   const currentSize = parseFloat(style);
 //   let newSize = '';
 //   newSize = `${currentSize + 1}px`;
@@ -91,4 +78,17 @@ box[4]?.addEventListener('mouseover', () => {
 box[4]?.addEventListener('mouseleave', () => {
   clearInterval(extraTimer);
   counterExtra.innerHTML = '0';
+});
+// input
+inputText?.addEventListener('input', () => {
+  const inputChangeP = document.querySelector<HTMLElement>('.input-text');
+
+  inputChangeP.innerHTML = inputText.value;
+});
+// šei nospiežot 7.pogu aiziet konsolēt ik pēc 1 sekundes vienu un to pašu
+const Clo = () => {
+  console.log('hello');
+};
+btn[7]?.addEventListener('click', () => {
+  setInterval(Clo, 3000);
 });
