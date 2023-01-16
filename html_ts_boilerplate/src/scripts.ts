@@ -1,9 +1,6 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable quotes */
-
-const btn = document.querySelectorAll<HTMLElement>('.btn');
-const box = document.querySelectorAll<HTMLElement>('.fields-box--element');
-const body = document.querySelector<HTMLElement>('.body');
+const btn = document.querySelectorAll<HTMLButtonElement>('.btn');
+const box = document.querySelectorAll<HTMLDivElement>('.fields-box--element');
+const body = document.querySelector<HTMLBodyElement>('.body');
 const inputText = document.querySelector<HTMLInputElement>('.fname');
 
 // 1//
@@ -54,7 +51,7 @@ inputText?.addEventListener('input', () => {
 });
 // šei nospiežot 7.pogu aiziet konsolēt ik pēc 1 sekundes vinu un to pašu
 const Clo = () => {
-  console.log("hello");
+  console.log('hello');
 };
 btn[7]?.addEventListener('click', () => {
   setInterval(Clo, 3000);
@@ -86,12 +83,12 @@ const counterExtra = document.querySelector<HTMLElement>('#hereExtra');
 let extraCounter = 0;
 const extra = () => {
   counterExtra.innerHTML = (((extraCounter++) + 1).toString());
-}
+};
 let extraTimer:NodeJS.Timer;
 box[4]?.addEventListener('mouseover', () => {
-   extraTimer = setInterval(extra, 1000);
+  extraTimer = setInterval(extra, 1000);
 });
 box[4]?.addEventListener('mouseleave', () => {
   clearInterval(extraTimer);
-  counterExtra.innerHTML = "0";
+  counterExtra.innerHTML = '0';
 });
